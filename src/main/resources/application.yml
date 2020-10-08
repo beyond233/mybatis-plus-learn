@@ -1,0 +1,44 @@
+spring:
+  #环境
+  profiles:
+    active: dev
+  #数据库
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/his?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  #Freemarker静态资源配置
+  freemarker:
+    #设定ftl文件路径
+    template-loader-path: classpath:/templates
+    #关闭缓存，及时刷新(上线生产环境需要修改为true)
+    cache: false
+    charset: utf-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: true
+    expose-session-attributes: true
+    request-context-attribute: request
+    suffix: .ftl
+  # SpringMVC配置
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  #Thymeleaf
+  thymeleaf:
+    cache: false
+#MyBatis-Plus
+mybatis-plus:
+  global-config:
+    db-config:
+      #逻辑删除
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  configuration:
+    #SQL日志输出
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+<!--    <link rel="stylesheet" th:href="@{}">-->
+<!--    <script type="text/javascript" th:src="@{/jquery.min.js}"></script>-->
+    <script type="text/javascript" src="jquery.min.js"></script>
+</head>
+<body>
+
+<h1 th:text="${var}">hello</h1>
+
+<button value="1">1</button>
+<button value="男">男</button>
+<button value="女">女</button>
+
+<script type="text/javascript">
+    $("button:first").click(function () {
+        $.get("/user/1",function (data) {
+            if (data != null) {
+                alert(data.userName);
+            }
+        });
+
+    });
+</script>
+</body>
+</html>
